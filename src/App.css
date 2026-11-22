@@ -1,0 +1,417 @@
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+}
+
+.app h1 {
+  font-size: 36px;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+}
+
+.tile {
+  width: 55px;
+  height: 55px;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+/* Correct letter and position */
+.tile.correct {
+  background-color: #538d4e;
+  border-color: #538d4e;
+  color: white;
+}
+
+/* Correct letter, wrong position */
+.tile.present {
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+  color: white;
+}
+
+/* Letter does not exist */
+.tile.absent {
+  background-color: #3a3a3c;
+  border-color: #3a3a3c;
+  color: white;
+}
+
+
+/* Virtual keyboard */
+
+.keyboard {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.key {
+  flex: 1;
+  height: 55px;
+  border: none;
+  border-radius: 4px;
+  background-color: #818384;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.special-key {
+  flex: 1.5;
+  height: 55px;
+  border: none;
+  border-radius: 4px;
+  background-color: #818384;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.key.correct {
+  background-color: #538d4e;
+}
+
+.key.present {
+  background-color: #b59f3b;
+}
+
+.key.absent {
+  background-color: #3a3a3c;
+}
+
+.key:active,
+.special-key:active {
+  transform: scale(0.95);
+}
+
+
+
+/* Game Over Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal {
+  background: #1f1f20;
+  color: white;
+  padding: 35px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.modal h2 {
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.modal p {
+  color: #cccccc;
+  margin-bottom: 25px;
+}
+
+.solution {
+  margin-bottom: 25px;
+  color: #cccccc;
+}
+
+.solution h3 {
+  color: #538d4e;
+  font-size: 30px;
+  letter-spacing: 5px;
+  margin-top: 10px;
+}
+
+.modal button {
+  background: #538d4e;
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background: #43743e;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+
+  .app {
+    padding: 20px 8px;
+  }
+
+  .app h1 {
+    font-size: 30px;
+  }
+
+  .tile {
+    width: 48px;
+    height: 48px;
+    font-size: 23px;
+  }
+
+  .keyboard {
+    margin-top: 25px;
+    gap: 6px;
+  }
+
+  .keyboard-row {
+    gap: 3px;
+  }
+
+  .key {
+    height: 48px;
+    font-size: 12px;
+  }
+
+  .special-key {
+    height: 48px;
+    font-size: 9px;
+  }
+
+  .modal {
+    padding: 25px;
+  }
+
+}
+
+.game-instructions {
+  color: #818384;
+  font-size: 14px;
+  margin-top: -20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.help-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.help-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #818384;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.help-box {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  padding: 20px;
+  background: #272729;
+  border: 1px solid #555;
+  border-radius: 8px;
+  z-index: 10;
+  text-align: left;
+}
+
+.help-box h2 {
+  margin-bottom: 15px;
+}
+
+.help-box p {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+.close-help {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.help-example {
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.example-tile {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+}
+
+.example-tile.correct {
+  background: #538d4e;
+}
+
+.example-tile.present {
+  background: #b59f3b;
+}
+
+.example-tile.absent {
+  background: #3a3a3c;
+}
+
+.statistics {
+  margin-top: 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+}
+
+.statistics h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stats-container h3 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.stats-container p {
+  color: #818384;
+  font-size: 13px;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 8px;
+  }
+
+  .app h1 {
+    font-size: 30px;
+  }
+
+  .tile {
+    width: 48px;
+    height: 48px;
+    font-size: 23px;
+  }
+
+  .game-board {
+    gap: 5px;
+  }
+
+  .row {
+    gap: 5px;
+  }
+
+  .keyboard {
+    margin-top: 25px;
+    gap: 6px;
+    padding: 0 3px;
+  }
+
+  .keyboard-row {
+    gap: 3px;
+  }
+
+  .key {
+    height: 48px;
+    font-size: 12px;
+  }
+
+  .special-key {
+    height: 48px;
+    font-size: 9px;
+  }
+
+  .modal {
+    padding: 25px;
+  }
+
+  .help-box {
+    width: min(300px, calc(100vw - 30px));
+  }
+
+  .statistics {
+    margin-top: 25px;
+  }
+}
+
+/* Responsive design for tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app {
+    padding: 25px 15px;
+  }
+
+  .tile {
+    width: 52px;
+    height: 52px;
+  }
+
+  .keyboard {
+    max-width: 460px;
+  }
+}
